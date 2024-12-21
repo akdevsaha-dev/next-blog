@@ -1,19 +1,13 @@
 import { PrismaClient } from "@prisma/client";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-interface RouteContext {
-    params: {
-        id: string
-    }
-}
-
 export async function GET(
     request: Request,
-    { params }: RouteContext
+    context: { params: { id: string } }  // This is the correct type definition
 ) {
-    const { id } = params;
+    const { id } = context.params;
 
     if (!id) {
         return NextResponse.json(
@@ -40,7 +34,6 @@ export async function GET(
                 },
             },
         });
-
 
         if (!post) {
             return NextResponse.json(
