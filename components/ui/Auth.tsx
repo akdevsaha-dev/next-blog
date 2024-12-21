@@ -21,7 +21,7 @@ export default function Auth({ type }: { type: "signup" | "signin" }) {
             const jwt = response.data.token;
             localStorage.setItem("token", jwt);
             router.push("/blogs");
-        } catch (error) {
+        } catch {
             alert("ERROR WHILE SIGNING UP");
         }
     }

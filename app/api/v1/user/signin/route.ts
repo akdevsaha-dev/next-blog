@@ -37,7 +37,7 @@ export async function POST(req: Request) {
             })
         }
 
-    } catch (e) {
+    } catch {
         return NextResponse.json({
             message: "failed to sign in!"
         })

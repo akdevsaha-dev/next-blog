@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
          token
     })
-    } catch(e) {    
+    } catch {    
        return NextResponse.json({
        message: "error creating user, please try again!"
        })
