@@ -41,6 +41,7 @@ export async function GET(
             },
         });
 
+
         if (!post) {
             return NextResponse.json(
                 { error: "Post not found" },
