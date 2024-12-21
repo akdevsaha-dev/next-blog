@@ -5,9 +5,9 @@ const prisma = new PrismaClient();
 
 export async function GET(
   request: Request,
-  context: { params: { id: string } } // This is the correct type definition
+  { params }: { params: { id: string } }
 ) {
-  const { id } = context.params;
+  const { id } = params;
 
   if (!id) {
     return NextResponse.json({ error: "Post ID is required" }, { status: 400 });
