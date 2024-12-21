@@ -3,17 +3,17 @@ import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-type Props = {
+interface RouteContext {
     params: {
         id: string
     }
 }
 
 export async function GET(
-    request: NextRequest,
-    context: Props
+    request: Request,
+    { params }: RouteContext
 ) {
-    const { id } = context.params;
+    const { id } = params;
 
     if (!id) {
         return NextResponse.json(
