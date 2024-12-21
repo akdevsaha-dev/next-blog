@@ -3,11 +3,17 @@ import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
+type Props = {
+    params: {
+        id: string
+    }
+}
+
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: Props
 ) {
-    const { id } = params;
+    const { id } = context.params;
 
     if (!id) {
         return NextResponse.json(
@@ -19,7 +25,7 @@ export async function GET(
     try {
         const post = await prisma.posts.findFirst({
             where: {
-                id: Number(id), // Adjust if `id` is a string in your database
+                id: Number(id),
             },
             select: {
                 id: true,
