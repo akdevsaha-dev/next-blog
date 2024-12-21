@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 const prisma = new PrismaClient()
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET( { params }: { params: { id: string } }) {
     const { id } =  params
     if (!id) {
         return NextResponse.json({ error: "Post ID is required" }, { status: 400 });
